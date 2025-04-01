@@ -1,0 +1,20 @@
+# 示例账号配置文件
+# 复制并重命名为accounts.yaml，然后填入你的真实账号信息
+
+# X 账号配置（用于tweety-ns登录）
+x_api:
+  username: "your_x_username"  # X账号用户名或邮箱
+  password: "your_x_password"  # X账号密码
+  
+# DeepSeek API 配置
+deepseek_api:
+  api_key: "your_deepseek_api_key_here"
+  organization_id: "your_org_id_here"
+  
+# 邮件发送配置
+email_smtp:
+  server: "smtp.gmail.com"
+  port: 587
+  username: "your_email@gmail.com"
+  password: "your_app_password_here"
+  sender: "AI日报 <your_email@gmail.com>"
