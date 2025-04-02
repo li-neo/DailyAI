@@ -11,6 +11,7 @@
 
 ## 运行截图
 ![GMAIL](Gmail.png "GMAIL")
+![DeepSeek](LLM.png "LLM")
 ![LOG](Log.png "LOG")
 
 ## 系统要求

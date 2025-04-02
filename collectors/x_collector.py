@@ -241,7 +241,7 @@ class XCollector(BaseCollector):
                         # 带重试的页面访问
                         for attempt in range(self.retry_count):
                             try:
-                                profile_url = f"https://twitter.com/{username}"
+                                profile_url = f"https://x.com/{username}"
                                 self.driver.get(profile_url)
                                 self.logger.info(f"正在加载: {profile_url}")
                                 time.sleep(5)  # 给页面足够的加载时间
@@ -405,7 +405,7 @@ class XCollector(BaseCollector):
                                         'retweets': retweets, 
                                         'replies': replies,
                                         'quotes': 0,
-                                        'url': tweet_link if 'tweet_link' in locals() else f"https://twitter.com/{username}/status/{tweet_id}",
+                                        'url': tweet_link if 'tweet_link' in locals() else f"https://x.com/{username}/status/{tweet_id}",
                                         'links': []
                                     })
                                     
@@ -459,7 +459,7 @@ class XCollector(BaseCollector):
                                 cookies = json.load(f)
                                 
                             # 先访问 Twitter 网站，然后才能添加 cookies
-                            self.driver.get("https://twitter.com")
+                            self.driver.get("https://x.com")
                             time.sleep(1)
                             
                             # 添加 cookies
@@ -600,9 +600,9 @@ class XCollector(BaseCollector):
                     if tweet_date < start_date:
                         continue
                         
-                    # 检查关键词
-                    if not self.is_relevant(tweet.text):
-                        continue
+                    # 检查关键词,去掉关键词过滤
+                    # if not self.is_relevant(tweet.text):
+                    #     continue
                     
                     # 转换为内部Tweet模型
                     tweet_model = self._convert_to_model(tweet, account)
@@ -650,7 +650,7 @@ class XCollector(BaseCollector):
         quotes = getattr(tweet, 'quotes', 0) or 0
         
         # 获取URL
-        tweet_url = getattr(tweet, 'url', f"https://twitter.com/{account['username']}/status/{tweet_id}")
+        tweet_url = getattr(tweet, 'url', f"https://x.com/{account['username']}/status/{tweet_id}")
         
         # 获取引用链接
         urls = []
